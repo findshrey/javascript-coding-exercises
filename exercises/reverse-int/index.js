@@ -17,4 +17,4 @@ function reverseInt(n) {
    return reverseNum * Math.sign(n)
 }
 
-module.exports = reverseInt;
+module.exports = reverseInt

@@ -12,7 +12,7 @@ function reverse(str) {
    }, '')
 }
 
-module.exports = reverse;
+module.exports = reverse
 
 // function reverse(str) {
 //    return str.split('').reverse().join('')

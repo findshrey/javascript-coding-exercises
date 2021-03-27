@@ -15,7 +15,7 @@ function palindrome(str) {
    })
 }
 
-module.exports = palindrome;
+module.exports = palindrome
 
 // function palindrome(str) {
 //    let reverse = str.split('').reverse().join('')
