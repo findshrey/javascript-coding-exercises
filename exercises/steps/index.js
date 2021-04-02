@@ -18,11 +18,11 @@
 //       '####'
 
 function steps(n, row = 0, stair = '') {
-   if (n === row) {
+   if (row === n) {
       return
    }
 
-   if (n === stair.length) {
+   if (stair.length === n) {
       console.log(stair);
       return steps(n, row + 1)
    }
