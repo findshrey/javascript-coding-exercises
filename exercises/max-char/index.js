@@ -12,6 +12,7 @@ function maxChar(str) {
 
    for (let char of str) {
       charMap[char] ? charMap[char]++ : (charMap[char] = 1)
+      // charMap[char] = charMap[char] + 1 || 1
 
       if (charMap[char] > max) {
          max = charMap[char]
