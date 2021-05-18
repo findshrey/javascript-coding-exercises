@@ -8,17 +8,22 @@
 // Example:
 //   fib(4) === 3
 
+// Iterative (better space complexity)
 function fib(n) {
-   if (n < 2) {
-      return n
+   let lastNum = 1
+   let prevNum = 0
+
+   for (let i = 2; i <= n; i++) {
+      lastNum = lastNum + prevNum
+      prevNum = lastNum - prevNum
    }
 
-   return fib(n - 1) + fib(n - 2)
+   return n < 2 ? n : lastNum
 }
 
 module.exports = fib
 
-
+// // Iterative
 // function fib(n) {
 //    const result = [0, 1]
 
@@ -30,4 +35,22 @@ module.exports = fib
 //    }
 
 //    return result[n]
+// }
+
+// // Recursive
+// function fib(n) {
+//    if (n < 2) {
+//       return n
+//    }
+
+//    return fib(n - 1) + fib(n - 2)
+// }
+
+// // Recursive (better time complexity)
+// function fib(n, i = 1, current = 1, prev = 0) {
+//    if (n === i) {
+//       return current;
+//    }
+
+//    return fib(n, i + 1, current + prev, current);
 // }
