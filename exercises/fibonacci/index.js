@@ -8,18 +8,30 @@
 // Example:
 //   fib(4) === 3
 
-// Iterative (better space complexity)
-function fib(n) {
-   let lastNum = 1
-   let prevNum = 0
+function memoize(fn) {
+   const cache = {}
 
-   for (let i = 2; i <= n; i++) {
-      lastNum = lastNum + prevNum
-      prevNum = lastNum - prevNum
+   return function (...args) {
+      if (cache[args]) {
+         return cache[args]
+      }
+
+      const result = fn.apply(this, args)
+      cache[args] = result
+
+      return result
+   }
+}
+
+function slowFib(n) {
+   if (n < 2) {
+      return n
    }
 
-   return n < 2 ? n : lastNum
+   return fib(n - 1) + fib(n - 2)
 }
+
+const fib = memoize(slowFib)
 
 module.exports = fib
 
@@ -35,6 +47,19 @@ module.exports = fib
 //    }
 
 //    return result[n]
+// }
+
+// // Iterative (better space complexity)
+// function fib(n) {
+//    let lastNum = 1
+//    let prevNum = 0
+
+//    for (let i = 2; i <= n; i++) {
+//       lastNum = lastNum + prevNum
+//       prevNum = lastNum - prevNum
+//    }
+
+//    return n < 2 ? n : lastNum
 // }
 
 // // Recursive
