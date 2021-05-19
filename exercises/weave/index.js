@@ -27,7 +27,7 @@ const Queue = require('./queue')
 function weave(sourceOne, sourceTwo) {
    const result = new Queue()
 
-   while (sourceOne.peek() || sourceTwo.peek()) {
+   while (sourceOne.peek() !== undefined || sourceTwo.peek() !== undefined) {
       if (sourceOne.peek()) {
          const item = sourceOne.remove()
          result.add(item)
