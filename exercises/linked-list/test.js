@@ -28,7 +28,7 @@ describe("Insert First", () => {
   })
 })
 
-describe.skip("Size", () => {
+describe("Size", () => {
   test("returns the number of items in the linked list", () => {
     const l = new List()
     expect(l.size()).toEqual(0)
@@ -40,7 +40,7 @@ describe.skip("Size", () => {
   })
 })
 
-describe.skip("GetFirst", () => {
+describe("GetFirst", () => {
   test("returns the first element", () => {
     const l = new List()
     l.insertFirst(1)
@@ -48,9 +48,14 @@ describe.skip("GetFirst", () => {
     l.insertFirst(2)
     expect(l.getFirst().data).toEqual(2)
   })
+
+  test("returns null if the linked list is empty", () => {
+    const l = new List()
+    expect(l.getFirst()).toBeNull()
+  })
 })
 
-describe.skip("GetLast", () => {
+describe("GetLast", () => {
   test("returns the last element", () => {
     const l = new List()
     l.insertFirst(2)
@@ -58,9 +63,14 @@ describe.skip("GetLast", () => {
     l.insertFirst(1)
     expect(l.getLast()).toEqual({ data: 2, next: null })
   })
+
+  test("returns null if the linked list is empty", () => {
+    const l = new List()
+    expect(l.getLast()).toBeNull()
+  })
 })
 
-describe.skip("Clear", () => {
+describe("Clear", () => {
   test("empties out the list", () => {
     const l = new List()
     expect(l.size()).toEqual(0)
@@ -74,7 +84,7 @@ describe.skip("Clear", () => {
   })
 })
 
-describe.skip("RemoveFirst", () => {
+describe("RemoveFirst", () => {
   test("removes the first node when the list has a size of one", () => {
     const l = new List()
     l.insertFirst("a")
@@ -97,7 +107,7 @@ describe.skip("RemoveFirst", () => {
   })
 })
 
-describe.skip("RemoveLast", () => {
+describe("RemoveLast", () => {
   test("RemoveLast removes the last node when list is empty", () => {
     const l = new List()
     expect(() => {
@@ -135,7 +145,7 @@ describe.skip("RemoveLast", () => {
   })
 })
 
-describe.skip("InsertLast", () => {
+describe("InsertLast", () => {
   test("adds to the end of the list", () => {
     const l = new List()
     l.insertFirst("a")
@@ -145,9 +155,16 @@ describe.skip("InsertLast", () => {
     expect(l.size()).toEqual(2)
     expect(l.getLast().data).toEqual("b")
   })
+
+  test("adds to the end of an empty list", () => {
+    const l = new List()
+    l.insertLast("a")
+    expect(l.size()).toEqual(1)
+    expect(l.getLast().data).toEqual("a")
+  })
 })
 
-describe.skip("GetAt", () => {
+describe("GetAt", () => {
   test("returns the node at given index", () => {
     const l = new List()
     expect(l.getAt(10)).toEqual(null)
@@ -161,6 +178,7 @@ describe.skip("GetAt", () => {
     expect(l.getAt(1).data).toEqual(2)
     expect(l.getAt(2).data).toEqual(3)
     expect(l.getAt(3).data).toEqual(4)
+    expect(l.getAt(100)).toEqual(null)
   })
 })
 
