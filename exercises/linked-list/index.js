@@ -93,7 +93,7 @@ class LinkedList {
 
   getAt(index) {
     if (index < 0) {
-      return null
+      return
     }
 
     let node = this.head
@@ -121,6 +121,25 @@ class LinkedList {
 
   //   return node
   // }
+
+  removeAt(index) {
+    if (!this.head) {
+      return
+    }
+
+    if (index === 0) {
+      const headNode = this.head
+      return (this.head = headNode.next)
+    }
+
+    const prevNode = this.getAt(index - 1)
+
+    if (!prevNode || !prevNode.next) {
+      return
+    }
+
+    prevNode.next = prevNode.next.next
+  }
 }
 
 module.exports = { Node, LinkedList }
