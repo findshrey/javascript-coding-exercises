@@ -67,7 +67,8 @@ class LinkedList {
     }
 
     if (!this.head.next) {
-      return (this.head = null)
+      this.head = null
+      return
     }
 
     let prevNode = this.head
@@ -113,7 +114,7 @@ class LinkedList {
 
   //   for (let counter; counter < index; counter++) {
   //     if (!node) {
-  //       return null
+  //       return
   //     }
 
   //     node = node.next
@@ -129,7 +130,8 @@ class LinkedList {
 
     if (index === 0) {
       const headNode = this.head
-      return (this.head = headNode.next)
+      this.head = headNode.next
+      return
     }
 
     const prevNode = this.getAt(index - 1)
@@ -139,6 +141,29 @@ class LinkedList {
     }
 
     prevNode.next = prevNode.next.next
+  }
+
+  insertAt(data, index) {
+    if (!this.head) {
+      this.head = new Node(data)
+      return
+    }
+
+    if (index === 0) {
+      this.head = new Node(data, this.head)
+      return
+    }
+
+    const prevNode = this.getAt(index - 1)
+
+    // Out of bounds scenario
+    if (!prevNode) {
+      const lastNode = this.getLast()
+      lastNode.next = new Node(data)
+      return
+    }
+
+    prevNode.next = new Node(data, prevNode.next)
   }
 }
 
